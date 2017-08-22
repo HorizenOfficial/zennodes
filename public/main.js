@@ -27,13 +27,37 @@ socket.on('peerLoc', function(data) {
     right.replaceChild(countryContainer, document.getElementById('country'));
 });
 
+socket.on('getInfo', function(data) {
+    var tableContainer = document.getElementById('nodeinfo')                       
+    var tbody = document.createElement('tbody')                                 
+    tbody.setAttribute('id', 'nodebody');
+
+    var tr = document.createElement('tr');
+
+    var block = document.createElement('td');
+    var blockhash = document.createElement('td');
+    var difficulty = document.createElement('td');
+
+    block.innerHTML = data.blocks;
+    blockhash.innerHTML = data.bestblockhash;
+    difficulty.innerHTML = data.difficulty;
+
+    tr.append(block);
+    tr.append(blockhash);
+    tr.append(difficulty);
+
+    tbody.append(tr);
+
+    tableContainer.replaceChild(tbody, document.getElementById('nodebody'));
+});
+
 socket.on('peerInfo', function(data) {
     var peerContainer = document.createElement('div');
     peerContainer.setAttribute('id', 'peers');
 
-    var tableContainer = document.getElementById('table')
-    var table = document.createElement('tbody')
-    table.setAttribute('id', 'tbody');
+    var tableContainer = document.getElementById('peerinfo')
+    var tbody = document.createElement('peerbody')
+    tbody.setAttribute('id', 'peerbody');
 
     var subver = [];
     var subvers = {};
@@ -65,10 +89,10 @@ socket.on('peerInfo', function(data) {
         tr.append(subversion);
         tr.append(blockheight);
 
-        table.append(tr);
+        tbody.append(tr);
     }
 
-    tableContainer.replaceChild(table, document.getElementById('tbody'));
+    tableContainer.replaceChild(tbody, document.getElementById('peerbody'));
     right.replaceChild(peerContainer, document.getElementById('peers'));
 });
 

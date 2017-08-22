@@ -2,125 +2,146 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>Zencash Network</title>
+    <meta charset="utf-8">
+    <title>Zencash Network</title>
 </head>
 <style>
-  html {
-    height: 100%;
-  }
+    html {
+        height: 100%;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        background: #000 center center no-repeat;
+        color: #fff;
+        font-family: sans-serif;
+        font-size: 13px;
+        line-height: 20px;
+        height: 100%;
+    }
+    
+    .leftside {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        height: 100%;
+        width: 86%;
+        left: -100%;
+        overflow-y: scroll;
+    }
+    
+    .rightside {
+        width: 150px;
+        position: absolute;
+        right: 10px;
+        margin: 5px;
+        padding: 10px;
+    }
+    
+    table,
+    th,
+    td {
+        border: 5px hidden;
+        color: #fff;
+    }
+    
+    .info {
+        font-size: 11px;
+        position: absolute;
+        bottom: 5px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 3px;
+        right: 10px;
+        padding: 10px;
+    }
+    
+    .button {
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+    }
+    
+    .next {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    .round {
+        border-radius: 50%;
+    }
 
-  body {
-    margin: 0;
-    padding: 0;
-    background: #000 center center no-repeat;
-    color: #fff;
-    font-family: sans-serif;
-    font-size: 13px;
-    line-height: 20px;
-    height: 100%;
-  }
+    /*.node {
+        float: left;
+        display: inline-block;
+    }
 
-  .leftside {
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 10px;
-    height: 100%;
-    width: 80%;
-    left: -100%;
-    overflow-y: scroll;
-  }
-
-  .rightside {
-    width: 150px;
-    position: absolute;
-    right: 10px;
-    margin: 5px;
-    padding: 10px;
-  }
-
-  table,
-  th,
-  td {
-    border: 1px hidden;
-    color: #fff;
-  }
-
-  .info {
-    font-size: 11px;
-    position: absolute;
-    bottom: 5px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 3px;
-    right: 10px;
-    padding: 10px;
-  }
-
-.button {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-}
-
-a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.previous {
-    background-color: #f1f1f1;
-    color: black;
-}
-
-.next {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.round {
-    border-radius: 50%;
-}
+    .peer {
+        float: right;
+        display: inline-block;
+    }*/
 </style>
 
 <body id="body">
-  <div class="globe" id="globe" style="style=" color: rgb(255, 255, 255); font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 13px; line-height: 20px; font-family: Arial, sans-serif; ""></div>
-
-  <div id="leftside" class="leftside">
-    <br><br>
-    <table id="table" class="table">
-      <thead>
-        <tr>
-          <th>Node IP</th>
-          <th>Pingtime</th>
-          <th>Version</th>
-          <th>Subversion</th>
-          <th>Blockheight</th>
-        </tr>
-      </thead>
-      <tbody id="tbody">
-      </tbody>
-    </table>
-  </div>
-
-  <div id="rightside" class="rightside">
-    <p id="nodes"></p>
-    <p>Node versions</p>
-    <div id="peers"></div>
-    <br>
-    <br>
-    <p>Countries</p>
-    <div id="country"></div>
-    <br>
-    <br>
-    <a href="#" id="slide" class="next round button">&#8250; Node info</a>
-  </div>
-
-  <div class="info">
-    <p><strong>Want to appear on this list? Append `addnode=zennodes.network` to your `zen.conf`. This product includes GeoLite2 data created by MaxMind, available from
-<a href="http://www.maxmind.com">http://www.maxmind.com</a>.</strong></p>
-  </div>
+    <div class="globe" id="globe" style="style=" color: rgb(255, 255, 255); font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 13px; line-height: 20px; font-family: Arial, sans-serif; ""></div>
+    <div id="leftside" class="leftside">
+        <br>
+        <br>
+        <table id="peerinfo" class="peer" style="float:right">
+            <thead>
+                <tr style="text-align: center">
+                    <th>Node IP</th>
+                    <th>Pingtime</th>
+                    <th>Version</th>
+                    <th>Subver</th>
+                    <th>Blocks</th>
+                </tr>
+            </thead>
+            <tbody id="peerbody">
+                <tr>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="nodeinfo" class="node" style="float:left">
+            <thead>
+                <tr>
+                    <th>Block</th>
+                    <th>Blockhash</th>
+                    <th>Difficulty</th>
+                </tr>
+            </thead>
+            <tbody id="nodebody">
+                <tr>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="rightside" class="rightside">
+        <p id="nodes"></p>
+        <p>Node versions</p>
+        <div id="peers"></div>
+        <br>
+        <br>
+        <p>Countries</p>
+        <div id="country"></div>
+        <br>
+        <br>
+        <a href="#" id="slide" class="next round button">&#8250; Node info</a>
+    </div>
+    <div class="info">
+        <p><strong>Want to appear on this list? Append `addnode=zennodes.network` to your `zen.conf`. This product includes GeoLite2 data created by MaxMind, available from
+                <a href="http://www.maxmind.com">www.maxmind.com</a>.</strong>
+        </p>
+    </div>
 </body>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script src="globe/third-party/Detector.js"></script>

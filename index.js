@@ -12,17 +12,22 @@ const io = require('socket.io')(server);
 geoip2.init('./GeoLite2-City_20170801/GeoLite2-City.mmdb');
 
 var peerInfo = null;
-var peerLoc = null;
 
 function getInfo(next) {
     node.cmd('getpeerinfo', (err, res, resHeaders) => {
-        if (err) throw err
+        if (err) throw err;
 
         peerInfo = res;
         io.emit('peerInfo', res);
 
         if (next)
             getLoc(res);
+    });
+
+    node.cmd('getblockchaininfo', (err, res, resHeaders) => {
+        if (err) throw err;
+
+        io.emit('getInfo', res);
     });
 }
 
@@ -33,11 +38,11 @@ function getLoc(peerData) {
 
     for (var peer in peerData) {
         (function(index) {
-            const peerIP = url.parse('http://'+peerData[index].addr).hostname
+            const peerIP = url.parse('http://'+peerData[index].addr).hostname;
             geoip2.lookupSimple(peerIP, (err, body) => {
                 if (err || !body) {
                     body = {
-                        loc: '0,0,0.01',
+                        loc: '0,0,0',
                         country: 'unknown',
                         ip: peerIP
                     };
@@ -72,7 +77,6 @@ function start(port) {
 
     io.on('connection', function(socket) {
         console.log('Connection!!! %s', socket.id);
-        io.emit('peerLoc', peerLoc);
     });
 
     server.listen(port);
