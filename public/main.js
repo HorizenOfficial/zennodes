@@ -56,7 +56,7 @@ socket.on('peerInfo', function(data) {
     peerContainer.setAttribute('id', 'peers');
 
     var tableContainer = document.getElementById('peerinfo')
-    var tbody = document.createElement('peerbody')
+    var tbody = document.createElement('tbody')
     tbody.setAttribute('id', 'peerbody');
 
     var subver = [];
