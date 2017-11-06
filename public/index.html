@@ -12,7 +12,7 @@
     
     body {
         margin: 0;
-        padding: 0;
+        padding-left: 20px;
         background: #000 center center no-repeat;
         color: #fff;
         font-family: sans-serif;
@@ -87,37 +87,15 @@
     <div id="leftside" class="leftside">
         <br>
         <br>
-        <table id="peerinfo" class="peer" style="float:right">
+        <table id="peerinfo" class="peer">
             <thead>
                 <tr style="text-align: center">
                     <th>Node IP</th>
-                    <th>Pingtime</th>
                     <th>Version</th>
-                    <th>Subver</th>
-                    <th>Blocks</th>
                 </tr>
             </thead>
             <tbody id="peerbody">
                 <tr>
-                    <td>Dummy</td>
-                    <td>Dummy</td>
-                    <td>Dummy</td>
-                    <td>Dummy</td>
-                    <td>Dummy</td>
-                </tr>
-            </tbody>
-        </table>
-        <table id="nodeinfo" class="node" style="float:left">
-            <thead>
-                <tr>
-                    <th>Block</th>
-                    <th>Blockhash</th>
-                    <th>Difficulty</th>
-                </tr>
-            </thead>
-            <tbody id="nodebody">
-                <tr>
-                    <td>Dummy</td>
                     <td>Dummy</td>
                     <td>Dummy</td>
                 </tr>
@@ -129,16 +107,13 @@
         <p>Node versions</p>
         <div id="peers"></div>
         <br>
-        <br>
+	<a href="#" id="slide" class="next round button">&#8250; Node info</a>
         <p>Countries</p>
         <div id="country"></div>
-        <br>
-        <br>
-        <a href="#" id="slide" class="next round button">&#8250; Node info</a>
     </div>
     <div class="info">
-        <p><strong>Want to appear on this list? Append `addnode=zennodes.network` to your `zen.conf`. This product includes GeoLite2 data created by MaxMind, available from
-                <a href="http://www.maxmind.com">www.maxmind.com</a>.</strong>
+        <p><strong>Want to appear on this list? Simply open port 9033. This product includes GeoLite2 data created by MaxMind, available from
+                <a href="http://www.maxmind.com">www.maxmind.com</a>.</strong> We DON'T	use cookies nor google analytics :D
         </p>
     </div>
 </body>

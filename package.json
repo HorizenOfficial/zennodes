@@ -13,6 +13,9 @@
     "bitcoin": "",
     "express": "",
     "geoip2": "^1.0.5",
+    "redi": "^0.1.0",
+    "redis": "^2.8.0",
+    "redis-client": "^0.3.5",
     "socket.io": "^2.0.3"
   }
 }

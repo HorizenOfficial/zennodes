@@ -63,7 +63,7 @@ socket.on('peerInfo', function(data) {
     var subvers = {};
 
     for (var i = 0; i < data.length; i++) {
-        subver.push(data[i].subver)
+        subver.push(data[i][3])
     }
 
     append(subver, subvers, data, peerContainer);
@@ -72,22 +72,13 @@ socket.on('peerInfo', function(data) {
         var tr = document.createElement('tr');
 
         var ip = document.createElement('td');
-        var blockheight = document.createElement('td');
-        var ping = document.createElement('td');
         var version = document.createElement('td');
-        var subversion = document.createElement('td');
 
-        ip.innerHTML = data[i].addr;
-        ping.innerHTML = data[i].pingtime;
-        version.innerHTML = data[i].version;
-        subversion.innerHTML = data[i].subver;
-        blockheight.innerHTML = data[i].synced_blocks;
+        ip.innerHTML = data[i][0] + ':' + data[i][1];
+        version.innerHTML = data[i][3];
 
         tr.append(ip);
-        tr.append(ping);
         tr.append(version);
-        tr.append(subversion);
-        tr.append(blockheight);
 
         tbody.append(tr);
     }
